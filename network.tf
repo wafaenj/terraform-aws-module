@@ -20,7 +20,7 @@ module "vpc" {
 # 1. Security Group pour l'ALB (ouvert au monde sur le port 80)
 resource "aws_security_group" "alb" {
   name        = "${var.name_prefix}-${var.environment}-alb-sg"
-  description = "Security group pour l'Application Load Balancer"
+  description = "Security group for ALB"
   vpc_id      = module.vpc.vpc_id
 
   ingress {
@@ -46,7 +46,7 @@ resource "aws_security_group" "alb" {
 # 2. Security Group pour les instances Web (cloisonné : accepte uniquement l'ALB)
 resource "aws_security_group" "web" {
   name        = "${var.name_prefix}-${var.environment}-web-sg"
-  description = "Security group pour les instances du backend web"
+  description = "Security group for web instances"
   vpc_id      = module.vpc.vpc_id
 
   ingress {
